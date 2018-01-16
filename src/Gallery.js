@@ -6,23 +6,26 @@ const Wrapper = styled.div`
   margin: 20px 0;
   display: grid;
   grid-gap: 10px;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
 `;
 
 const Thumbnail = styled.div`
-  width: 100%;
-  height: 100px;
+  position: relative;
   cursor: pointer;
   overflow: hidden;
   transform: scale(1);
   will-change: transform;
   transition: transform 0.3s ease;
+  padding-bottom: 100%;
   &:hover {
     transform: scale(0.9);
   }
 `;
 
 const Preview = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
