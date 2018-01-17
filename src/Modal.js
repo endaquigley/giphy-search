@@ -60,6 +60,7 @@ class Modal extends Component {
           loop
           muted
           autoPlay
+          playsInline
           src={ this.props.selected.images.original.mp4 }
         />
       </Wrapper>

@@ -42,7 +42,7 @@ class Gallery extends Component {
             this.props.data.map((media) => (
               <Thumbnail
                 key={ media.id }
-                source={ media.images.preview.mp4 }
+                source={ media.images.preview_gif.url }
                 handleClick={ () => this.setSelected(media) }
               />
             ))

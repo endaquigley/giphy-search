@@ -13,6 +13,7 @@ exports[`renders the original video when a media object is provided 1`] = `
       class="sc-htpNat fdswIX"
       loop=""
       autoplay=""
+      playsinline=""
       src="https://enda.ie/filename-01.mp4"
     />
   </div>

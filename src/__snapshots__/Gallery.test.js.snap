@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a video element for each element in the data array 1`] = `
+exports[`renders an image element for each element in the data array 1`] = `
 <div>
   <div
     class="sc-bZQynM jgZutv"
@@ -9,13 +9,11 @@ exports[`renders a video element for each element in the data array 1`] = `
       class="sc-bdVaJa iRVUNM"
     >
       <div
-        class="sc-bwzfXH bVDsAk"
+        class="sc-bwzfXH fFwymd"
       >
-        <video
+        <img
           class="sc-htpNat jtiZZo"
-          loop=""
-          autoplay=""
-          src="https://enda.ie/filename-01.mp4"
+          src="https://enda.ie/filename-01.gif"
         />
       </div>
     </div>
@@ -23,13 +21,11 @@ exports[`renders a video element for each element in the data array 1`] = `
       class="sc-bdVaJa iRVUNM"
     >
       <div
-        class="sc-bwzfXH bVDsAk"
+        class="sc-bwzfXH fFwymd"
       >
-        <video
+        <img
           class="sc-htpNat jtiZZo"
-          loop=""
-          autoplay=""
-          src="https://enda.ie/filename-02.mp4"
+          src="https://enda.ie/filename-02.gif"
         />
       </div>
     </div>
@@ -37,7 +33,7 @@ exports[`renders a video element for each element in the data array 1`] = `
 </div>
 `;
 
-exports[`renders no video elements when data is empty 1`] = `
+exports[`renders no image elements when data is empty 1`] = `
 <div>
   <div
     class="sc-bZQynM jgZutv"
