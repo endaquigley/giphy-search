@@ -2,14 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Modal from './Modal';
 
-it('renders an empty element when selected video is undefined', () => {
-  const component = document.createElement('div');
-  ReactDOM.render(<Modal selected={ undefined } />, component);
-
-  expect(component.innerHTML).toBe('');
-  expect(component).toMatchSnapshot();
-});
-
 it('renders the original video when a media object is provided', () => {
   const selected = {
     id: 1,

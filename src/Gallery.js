@@ -23,20 +23,29 @@ class Gallery extends Component {
   }
 
   render() {
+    let selectedModal = null;
+
+    if (this.state.selected) {
+      selectedModal = (
+        <Modal
+          selected={ this.state.selected }
+          handleClick={ () => this.setSelected(undefined) }
+        />
+      )
+    }
+
     return (
       <Fragment>
-        <Modal selected={ this.state.selected } handleClick={ () => this.setSelected(undefined) } />
+        { selectedModal }
         <Wrapper>
           {
-            this.props.data.map((media) => {
-              return (
-                <Thumbnail
-                  key={ media.id }
-                  source={ media.images.preview.mp4 }
-                  handleClick={ () => this.setSelected(media) }
-                />
-              )
-            })
+            this.props.data.map((media) => (
+              <Thumbnail
+                key={ media.id }
+                source={ media.images.preview.mp4 }
+                handleClick={ () => this.setSelected(media) }
+              />
+            ))
           }
         </Wrapper>
       </Fragment>

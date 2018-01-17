@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styled, { keyframes } from 'styled-components';
 import closeIcon from './images/close-icon.svg';
 
@@ -40,23 +40,31 @@ const Video = styled.video`
   animation: 0.4s ${ scale };
 `;
 
-const Modal = ({ selected, handleClick }) =>{
+class Modal extends Component {
 
-  if (selected === undefined) {
-    return null;
+  componentDidMount() {
+    // disable scroll when modal is open
+    document.body.classList.add('no-scroll');
   }
 
-  return (
-    <Wrapper onClick={ () => handleClick() }>
-      <Close src={ closeIcon } />
-      <Video
-        loop
-        muted
-        autoPlay
-        src={ selected.images.original.mp4 }
-      />
-    </Wrapper>
-  )
+  componentWillUnmount() {
+    // enable scroll when modal is closed
+    document.body.classList.remove('no-scroll');
+  }
+
+  render() {
+    return (
+      <Wrapper onClick={ () => this.props.handleClick() }>
+        <Close src={ closeIcon } />
+        <Video
+          loop
+          muted
+          autoPlay
+          src={ this.props.selected.images.original.mp4 }
+        />
+      </Wrapper>
+    )
+  }
 
 };
 

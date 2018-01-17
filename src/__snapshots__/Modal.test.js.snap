@@ -1,7 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an empty element when selected video is undefined 1`] = `<div />`;
-
 exports[`renders the original video when a media object is provided 1`] = `
 <div>
   <div
