@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a disabled previous button on page 1 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa hPftyW"
+  >
+    <button
+      disabled=""
+    >
+      Prev Page
+    </button>
+    <span>
+      Page 
+      1
+    </span>
+    <button>
+      Next Page
+    </button>
+  </div>
+</div>
+`;
+
+exports[`renders an enabled previous button on pages greater than 1 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa hPftyW"
+  >
+    <button>
+      Prev Page
+    </button>
+    <span>
+      Page 
+      2
+    </span>
+    <button>
+      Next Page
+    </button>
+  </div>
+</div>
+`;

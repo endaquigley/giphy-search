@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<div>
+  <p
+    class="sc-gzVnrw ligdFK"
+  >
+    🐶
+  </p>
+  <h1
+    class="sc-htoDjs hTwndg"
+  >
+    Searching for 
+    dogs
+    ...
+  </h1>
+  <button
+    disabled=""
+  >
+    Switch to Dogs
+  </button>
+  <button>
+    Switch to Cats
+  </button>
+  <div
+    class="sc-ifAKCX cNpWOD"
+  />
+  <div
+    class="sc-bdVaJa hPftyW"
+  >
+    <button
+      disabled=""
+    >
+      Prev Page
+    </button>
+    <span>
+      Page 
+      1
+    </span>
+    <button>
+      Next Page
+    </button>
+  </div>
+</div>
+`;

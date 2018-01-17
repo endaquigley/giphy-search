@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders a video element for each element in the data array 1`] = `
+<div>
+  <div
+    class="sc-bxivhb fLUZLq"
+  >
+    <div
+      class="sc-ifAKCX bPOvMM"
+    >
+      <video
+        class="sc-EHOje jjfgVa"
+        loop=""
+        autoplay=""
+        src="https://enda.ie/filename-01.mp4"
+      />
+    </div>
+    <div
+      class="sc-ifAKCX bPOvMM"
+    >
+      <video
+        class="sc-EHOje jjfgVa"
+        loop=""
+        autoplay=""
+        src="https://enda.ie/filename-02.mp4"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`renders no video elements when data is empty 1`] = `
+<div>
+  <div
+    class="sc-bxivhb fLUZLq"
+  />
+</div>
+`;
