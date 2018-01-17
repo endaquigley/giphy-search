@@ -51,15 +51,17 @@ class Gallery extends Component {
           {
             this.props.data.map((media) => {
               return (
-                <Thumbnail key={ media.id }>
-                  <Preview
-                    loop
-                    muted
-                    autoPlay
-                    src={ media.images.preview.mp4 }
-                    onClick={ () => this.setSelected(media) }
-                  />
-                </Thumbnail>
+                <div key={ media.id }>
+                  <Thumbnail>
+                    <Preview
+                      loop
+                      muted
+                      autoPlay
+                      src={ media.images.preview.mp4 }
+                      onClick={ () => this.setSelected(media) }
+                    />
+                  </Thumbnail>
+                </div>
               )
             })
           }
