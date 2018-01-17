@@ -3,26 +3,30 @@
 exports[`renders a video element for each element in the data array 1`] = `
 <div>
   <div
-    class="sc-bxivhb fLUZLq"
+    class="sc-bZQynM jgZutv"
   >
-    <div>
+    <div
+      class="sc-bdVaJa iRVUNM"
+    >
       <div
-        class="sc-ifAKCX bPOvMM"
+        class="sc-bwzfXH bVDsAk"
       >
         <video
-          class="sc-EHOje jjfgVa"
+          class="sc-htpNat jtiZZo"
           loop=""
           autoplay=""
           src="https://enda.ie/filename-01.mp4"
         />
       </div>
     </div>
-    <div>
+    <div
+      class="sc-bdVaJa iRVUNM"
+    >
       <div
-        class="sc-ifAKCX bPOvMM"
+        class="sc-bwzfXH bVDsAk"
       >
         <video
-          class="sc-EHOje jjfgVa"
+          class="sc-htpNat jtiZZo"
           loop=""
           autoplay=""
           src="https://enda.ie/filename-02.mp4"
@@ -36,7 +40,7 @@ exports[`renders a video element for each element in the data array 1`] = `
 exports[`renders no video elements when data is empty 1`] = `
 <div>
   <div
-    class="sc-bxivhb fLUZLq"
+    class="sc-bZQynM jgZutv"
   />
 </div>
 `;
