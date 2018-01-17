@@ -2,44 +2,49 @@
 
 exports[`renders without crashing 1`] = `
 <div>
-  <p
-    class="sc-gzVnrw ligdFK"
+  <header
+    class="sc-htoDjs kwuGBD"
   >
-    🐶
-  </p>
-  <h1
-    class="sc-htoDjs hTwndg"
-  >
-    Searching for 
-    dogs
-    ...
-  </h1>
-  <button
-    disabled=""
-  >
-    Switch to Dogs
-  </button>
-  <button>
-    Switch to Cats
-  </button>
-  <div
-    class="sc-ifAKCX cNpWOD"
-  />
-  <div
-    class="sc-bdVaJa hPftyW"
-  >
+    <h1
+      class="sc-gZMcBi hHyiFP"
+    >
+      🐶
+    </h1>
     <button
       disabled=""
     >
-      Prev Page
+      Dog Search
     </button>
-    <span>
-      Page 
-      1
-    </span>
     <button>
-      Next Page
+      Cat Search
     </button>
-  </div>
+  </header>
+  <main
+    class="sc-dnqmqq bxGFOx"
+  >
+    <div
+      class="sc-gzVnrw kthrBX"
+    />
+  </main>
+  <footer
+    class="sc-iwsKbI bIyLpF"
+  >
+    <div
+      class="sc-bdVaJa hPftyW"
+    >
+      <button
+        disabled=""
+      >
+        Prev Page
+      </button>
+      <span>
+        Page 
+        1
+      </span>
+      <button>
+        Next Page
+      </button>
+    </div>
+  </footer>
 </div>
 `;

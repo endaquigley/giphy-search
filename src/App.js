@@ -3,12 +3,24 @@ import styled from 'styled-components';
 import Pagination from './Pagination';
 import Gallery from './Gallery';
 
-const Emoji = styled.p`
-  margin: 0;
-  font-size: 80px;
+const Header = styled.header`
+  padding: 20px;
+  text-align: center;
+  background-color: var(--primary-colour);
+`;
+
+const Content = styled.main`
+  background-color: var(--secondary-colour);
+`;
+
+const Footer = styled.footer`
+  padding: 20px;
+  background-color: var(--primary-colour);
 `;
 
 const Heading = styled.h1`
+  font-size: 50px;
+  line-height: 1;
   margin-top: 0;
   margin-bottom: 15px;
 `;
@@ -21,7 +33,7 @@ class App extends Component {
     this.state = {
       page: 0,
       data: [],
-      query: 'dogs',
+      query: 'dog',
       loading: true
     };
 
@@ -72,11 +84,9 @@ class App extends Component {
     const response = await fetch(`${ endpoint }?api_key=${ key }&q=${ query }&offset=${ page * 25 }`);
     const { data } = await response.json();
 
-    this.setState((prevState) => {
-      return {
-        data: data,
-        loading: false
-      }
+    this.setState({
+      data: data,
+      loading: false
     });
     
   }
@@ -85,20 +95,27 @@ class App extends Component {
     return (
       <Fragment>
 
-        <Emoji>{ this.state.query === 'dogs' ? '🐶' : '🐱' }</Emoji>
-        <Heading>Searching for { this.state.query }...</Heading>
-        
-        <button onClick= { () => this.updateQuery('dogs') } disabled={ this.state.query === 'dogs' }>Switch to Dogs</button>
-        <button onClick= { () => this.updateQuery('cats') } disabled={ this.state.query === 'cats' }>Switch to Cats</button>
+        <Header>
+          <Heading>
+            { this.state.query === 'dog' ? '🐶' : '🐱' }
+          </Heading>
 
-        <Gallery data={ this.state.data } />
+          <button onClick= { () => this.updateQuery('dog') } disabled={ this.state.query === 'dog' }>Dog Search</button>
+          <button onClick= { () => this.updateQuery('cat') } disabled={ this.state.query === 'cat' }>Cat Search</button>
+        </Header>
 
-        <Pagination
-          page={ this.state.page }
-          prev={ () => this.prevPage() }
-          next={ () => this.nextPage() }
-        />
-        
+        <Content>
+          <Gallery data={ this.state.data } />
+        </Content>
+
+        <Footer>
+          <Pagination
+            page={ this.state.page }
+            prev={ () => this.prevPage() }
+            next={ () => this.nextPage() }
+          />
+        </Footer>
+
       </Fragment>
     );
   }

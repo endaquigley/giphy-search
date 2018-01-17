@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 
+const GridChild = styled.div`
+  /* perserve aspect ratio in Firefox */
+`;
+
 const Wrapper = styled.div`
   position: relative;
   cursor: pointer;
@@ -27,15 +31,17 @@ const Preview = styled.video`
 
 const Thumbnail = ({ source, handleClick }) => {
   return (
-    <Wrapper>
-      <Preview
-        loop
-        muted
-        autoPlay
-        src={ source }
-        onClick={ () => handleClick() }
-      />
-    </Wrapper>
+    <GridChild>
+      <Wrapper>
+        <Preview
+          loop
+          muted
+          autoPlay
+          src={ source }
+          onClick={ () => handleClick() }
+        />
+      </Wrapper>
+    </GridChild>
   )
 };
 

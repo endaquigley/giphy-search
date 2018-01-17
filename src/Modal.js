@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import styled, { keyframes } from 'styled-components';
 import closeIcon from './images/close-icon.svg';
 
@@ -22,7 +22,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.85);
+  background: rgba(0, 0, 0, 0.90);
 `;
 
 const Close = styled.img`
@@ -40,28 +40,24 @@ const Video = styled.video`
   animation: 0.4s ${ scale };
 `;
 
-class Modal extends Component {
+const Modal = ({ selected, handleClick }) =>{
 
-  render() {
-    const { selected } = this.props;
-
-    if (selected === undefined) {
-      return null;
-    }
-
-    return (
-      <Wrapper onClick={ () => this.props.handleClick() }>
-        <Close src={ closeIcon } />
-        <Video
-          loop
-          muted
-          autoPlay
-          src={ selected.images.original.mp4 }
-        />
-      </Wrapper>
-    )
+  if (selected === undefined) {
+    return null;
   }
 
-}
+  return (
+    <Wrapper onClick={ () => handleClick() }>
+      <Close src={ closeIcon } />
+      <Video
+        loop
+        muted
+        autoPlay
+        src={ selected.images.original.mp4 }
+      />
+    </Wrapper>
+  )
+
+};
 
 export default Modal;

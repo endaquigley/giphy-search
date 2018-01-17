@@ -5,7 +5,7 @@ exports[`renders an empty element when selected video is undefined 1`] = `<div /
 exports[`renders the original video when a media object is provided 1`] = `
 <div>
   <div
-    class="sc-bdVaJa jUiMYr"
+    class="sc-bdVaJa eVvdxU"
   >
     <img
       class="sc-bwzfXH PoSZD"
