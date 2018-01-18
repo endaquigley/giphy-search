@@ -27,10 +27,10 @@ exports[`renders without crashing 1`] = `
     />
   </main>
   <footer
-    class="sc-iwsKbI bIyLpF"
+    class="sc-iwsKbI fgeSzX"
   >
     <div
-      class="sc-bdVaJa hPftyW"
+      class="sc-bdVaJa bvvVRs"
     >
       <button
         disabled=""

@@ -3,7 +3,7 @@
 exports[`renders a disabled previous button on page 1 1`] = `
 <div>
   <div
-    class="sc-bdVaJa hPftyW"
+    class="sc-bdVaJa bvvVRs"
   >
     <button
       disabled=""
@@ -24,7 +24,7 @@ exports[`renders a disabled previous button on page 1 1`] = `
 exports[`renders an enabled previous button on pages greater than 1 1`] = `
 <div>
   <div
-    class="sc-bdVaJa hPftyW"
+    class="sc-bdVaJa bvvVRs"
   >
     <button>
       Prev Page

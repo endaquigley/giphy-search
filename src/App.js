@@ -14,6 +14,7 @@ const Content = styled.main`
 `;
 
 const Footer = styled.footer`
+  color: white;
   padding: 20px;
   background-color: var(--primary-colour);
 `;
