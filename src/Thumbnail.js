@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 const GridChild = styled.div`
-  /* perserve aspect ratio in Firefox */
+  /* preserve aspect ratio in Firefox */
 `;
 
 const Square = styled.div`
