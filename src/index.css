@@ -38,7 +38,7 @@ button {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  transition: all 1.5s linear;
+  transition: all 150ms linear;
   text-align: center;
   white-space: nowrap;
   text-decoration: none !important;
