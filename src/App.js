@@ -6,7 +6,6 @@ import Gallery from './Gallery';
 const Header = styled.header`
   padding: 20px;
   text-align: center;
-  background-color: var(--primary-colour);
 `;
 
 const Content = styled.main`
@@ -16,7 +15,6 @@ const Content = styled.main`
 const Footer = styled.footer`
   color: white;
   padding: 20px;
-  background-color: var(--primary-colour);
 `;
 
 const Heading = styled.h1`

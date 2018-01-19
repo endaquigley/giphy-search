@@ -3,7 +3,7 @@
 exports[`renders without crashing 1`] = `
 <div>
   <header
-    class="sc-htoDjs kwuGBD"
+    class="sc-htoDjs ggvsSU"
   >
     <h1
       class="sc-gZMcBi hHyiFP"
@@ -27,7 +27,7 @@ exports[`renders without crashing 1`] = `
     />
   </main>
   <footer
-    class="sc-iwsKbI fgeSzX"
+    class="sc-iwsKbI fHEDOg"
   >
     <div
       class="sc-bdVaJa bvvVRs"
