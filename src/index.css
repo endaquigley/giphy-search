@@ -1,10 +1,14 @@
-*, ::after, ::before {
-  box-sizing: inherit;
-}
-
 :root {
   --primary-colour: indianred;
   --secondary-colour: mintcream;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 html, body {
