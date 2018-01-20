@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders an image element with the correct src 1`] = `
+<div>
+  <div
+    class="sc-bdVaJa kiUbly"
+  >
+    <div
+      class="sc-bwzfXH fFwymd"
+    >
+      <img
+        class="sc-htpNat jtiZZo"
+        src="https://enda.ie/filename-01.gif"
+      />
+    </div>
+  </div>
+</div>
+`;

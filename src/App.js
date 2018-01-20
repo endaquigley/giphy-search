@@ -53,20 +53,16 @@ class App extends Component {
   }
 
   prevPage() {
-    this.setState((prevState) => {
-      return {
-        page: prevState.page - 1
-      }
+    this.setState(({ page }) => {
+      return { page: page - 1 }
     }, () => {
       this.fetchImages();
     });
   }
 
   nextPage() {
-    this.setState((prevState) => {
-      return {
-        page: prevState.page + 1
-      }
+    this.setState(({ page }) => {
+      return { page: page + 1 }
     }, () => {
       this.fetchImages();
     });
