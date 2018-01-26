@@ -16,12 +16,10 @@ class Gallery extends Component {
     selected: undefined
   }
 
-  setSelected(media) {
-    this.setState({
-      selected: media
-    });
+  setSelected(selected) {
+    this.setState({ selected });
   }
-
+  
   render() {
     let selectedModal = null;
 
