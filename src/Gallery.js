@@ -14,7 +14,7 @@ class Gallery extends Component {
 
   state = {
     selected: undefined
-  };
+  }
 
   setSelected(media) {
     this.setState({

@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import styled from 'styled-components';
-import Pagination from './Pagination';
+import GalleryContainer from './GalleryContainer';
 import Gallery from './Gallery';
+import Pagination from './Pagination';
 
 const Header = styled.header`
   padding: 20px;
@@ -26,64 +27,28 @@ const Heading = styled.h1`
 
 class App extends Component {
 
-  constructor() {
-    super();
-    
-    this.state = {
-      page: 0,
-      data: [],
-      query: 'dog',
-      loading: true
-    };
-
-    this.initialState = this.state;
+  state = {
+    page: 0,
+    query: 'dog'
   }
 
-  componentDidMount() {
-    this.fetchImages();
-  }
-
-  updateQuery(value) {
+  updateQuery(query) {
     this.setState({
-      ...this.initialState,
-      query: value
-    }, () => {
-      this.fetchImages();
+      page: 0,
+      query: query
     });
   }
 
   prevPage() {
     this.setState(({ page }) => {
       return { page: page - 1 }
-    }, () => {
-      this.fetchImages();
     });
   }
 
   nextPage() {
     this.setState(({ page }) => {
       return { page: page + 1 }
-    }, () => {
-      this.fetchImages();
     });
-  }
-
-  async fetchImages() {
-
-    this.setState({ loading: true });
-    
-    const { query, page } = this.state;
-    const key = process.env.REACT_APP_GIFFY_API_KEY;
-    const endpoint = 'https://api.giphy.com/v1/gifs/search';
-
-    const response = await fetch(`${ endpoint }?api_key=${ key }&q=${ query }&offset=${ page * 25 }`);
-    const { data } = await response.json();
-
-    this.setState({
-      data: data,
-      loading: false
-    });
-    
   }
 
   render() {
@@ -95,19 +60,21 @@ class App extends Component {
             { this.state.query === 'dog' ? '🐶' : '🐱' }
           </Heading>
 
-          <button onClick= { () => this.updateQuery('dog') } disabled={ this.state.query === 'dog' }>Dog Search</button>
-          <button onClick= { () => this.updateQuery('cat') } disabled={ this.state.query === 'cat' }>Cat Search</button>
+          <button onClick={ () => this.updateQuery('dog') } disabled={ this.state.query === 'dog' }>Dog Search</button>
+          <button onClick={ () => this.updateQuery('cat') } disabled={ this.state.query === 'cat' }>Cat Search</button>
         </Header>
 
         <Content>
-          <Gallery data={ this.state.data } />
+          <GalleryContainer page={ this.state.page } query={ this.state.query } render={({ data }) => (
+            <Gallery data={ data } />
+          )}/>
         </Content>
 
         <Footer>
           <Pagination
             page={ this.state.page }
-            prev={ () => this.prevPage() }
-            next={ () => this.nextPage() }
+            prevPage={ () => this.prevPage() }
+            nextPage={ () => this.nextPage() }
           />
         </Footer>
 

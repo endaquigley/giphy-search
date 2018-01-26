@@ -7,14 +7,14 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Pagination = ({ page, prev, next }) => {
+const Pagination = ({ page, prevPage, nextPage }) => {
   return (
     <Wrapper>
-      <button onClick= { () => prev() } disabled={ page === 0 }>
+      <button onClick= { () => prevPage() } disabled={ page === 0 }>
         Prev Page
       </button>
       <span>Page { page + 1 }</span>
-      <button onClick= { () => next() }>
+      <button onClick= { () => nextPage() }>
         Next Page
       </button>
     </Wrapper>
