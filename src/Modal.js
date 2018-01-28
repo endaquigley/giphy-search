@@ -60,7 +60,7 @@ class Modal extends Component {
           src={ this.props.selected.images.original.mp4 }
         />
       </Wrapper>
-    )
+    );
   }
 
 };

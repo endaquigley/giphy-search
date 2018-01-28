@@ -33,7 +33,7 @@ export const updateSelected = (selected) => {
   return {
     type: 'UPDATE_SELECTED',
     selected: selected
-  }
+  };
 }
 
 export const nextPage = () => {

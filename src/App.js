@@ -63,8 +63,8 @@ const mapStateToProps = (state) => {
   return {
     page: state.page,
     query: state.query
-  }
-};
+  };
+}
 
 const mapDispatchToProps = (dispatch) => {
   return {

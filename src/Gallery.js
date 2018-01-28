@@ -9,11 +9,11 @@ const Wrapper = styled.div`
   margin: 15px;
   display: grid;
   grid-gap: 15px;
-  --gallery-thumbnail-width: 85px;
-  grid-template-columns: repeat(auto-fit, minmax(var(--gallery-thumbnail-width), 1fr));
+  --thumbnail-width: 85px;
+  grid-template-columns: repeat(auto-fit, minmax(var(--thumbnail-width), 1fr));
 
   @media(min-width: 690px) {
-    --gallery-thumbnail-width: 120px;
+    --thumbnail-width: 120px;
   }
 `;
 
@@ -44,7 +44,7 @@ export class Gallery extends Component {
   }
 
   renderThumbnail(media) {
-    return  (
+    return (
       <Thumbnail
         key={ media.id }
         source={ media.images.preview_gif.url }
@@ -59,7 +59,7 @@ export class Gallery extends Component {
         { this.renderSelectedModal() }
         { this.props.data.map((media) => this.renderThumbnail(media)) }
       </Wrapper>
-    )
+    );
   }
 
 }

@@ -15,6 +15,7 @@ const Square = styled.div`
   background-color: rgba(0, 0, 0, 0.05);
   border: 1px solid rgba(0, 0, 0, 0.30);
   padding-bottom: 100%;
+  
   &:hover {
     transform: scale(0.9);
   }
@@ -29,17 +30,15 @@ const Image = styled.img`
   object-fit: cover;
 `;
 
-const Thumbnail = ({ source, handleClick }) => {
-  return (
-    <GridChild>
-      <Square>
-        <Image
-          src={ source }
-          onClick={ () => handleClick() }
-        />
-      </Square>
-    </GridChild>
-  )
-};
+const Thumbnail = ({ source, handleClick }) => (
+  <GridChild>
+    <Square>
+      <Image
+        src={ source }
+        onClick={ () => handleClick() }
+      />
+    </Square>
+  </GridChild>
+);
 
 export default Thumbnail;
