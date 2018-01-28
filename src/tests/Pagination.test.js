@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Pagination from './Pagination';
+import Pagination from '../Pagination';
 
 it('renders a disabled previous button on page 1', () => {
   const component = document.createElement('div');

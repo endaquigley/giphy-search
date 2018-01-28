@@ -3,12 +3,8 @@ import styled, { keyframes } from 'styled-components';
 import closeIcon from './images/close-icon.svg';
 
 const scale = keyframes`
-  from {
-    transform: scale(0);
-  }
-  to {
-    transform: scale(1);
-  }
+  from { transform: scale(0) }
+  to { transform: scale(1) }
 `;
 
 const Wrapper = styled.div`

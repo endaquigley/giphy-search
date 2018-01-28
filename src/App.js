@@ -1,8 +1,9 @@
 import React, { Component, Fragment } from 'react';
+import { connect } from 'react-redux';
 import styled from 'styled-components';
-import GalleryContainer from './GalleryContainer';
 import Gallery from './Gallery';
 import Pagination from './Pagination';
+import * as actions from './actions';
 
 const Header = styled.header`
   padding: 20px;
@@ -27,54 +28,28 @@ const Heading = styled.h1`
 
 class App extends Component {
 
-  state = {
-    page: 0,
-    query: 'dog'
-  }
-
-  updateQuery(query) {
-    this.setState({
-      page: 0,
-      query: query
-    });
-  }
-
-  prevPage() {
-    this.setState(({ page }) => {
-      return { page: page - 1 }
-    });
-  }
-
-  nextPage() {
-    this.setState(({ page }) => {
-      return { page: page + 1 }
-    });
-  }
-
   render() {
     return (
       <Fragment>
 
         <Header>
           <Heading>
-            { this.state.query === 'dog' ? '🐶' : '🐱' }
+            { this.props.query === 'dog' ? '🐶' : '🐱' }
           </Heading>
 
-          <button onClick={ () => this.updateQuery('dog') } disabled={ this.state.query === 'dog' }>Dog Search</button>
-          <button onClick={ () => this.updateQuery('cat') } disabled={ this.state.query === 'cat' }>Cat Search</button>
+          <button onClick={ () => this.props.updateQuery('dog') } disabled={ this.props.query === 'dog' }>Dog Search</button>
+          <button onClick={ () => this.props.updateQuery('cat') } disabled={ this.props.query === 'cat' }>Cat Search</button>
         </Header>
 
         <Content>
-          <GalleryContainer page={ this.state.page } query={ this.state.query } render={({ data }) => (
-            <Gallery data={ data } />
-          )}/>
+          <Gallery />
         </Content>
 
         <Footer>
           <Pagination
-            page={ this.state.page }
-            prevPage={ () => this.prevPage() }
-            nextPage={ () => this.nextPage() }
+            page={ this.props.page }
+            prevPage={ () => this.props.prevPage() }
+            nextPage={ () => this.props.nextPage() }
           />
         </Footer>
 
@@ -82,6 +57,23 @@ class App extends Component {
     );
   }
 
+};
+
+const mapStateToProps = (state) => {
+  return {
+    page: state.page,
+    query: state.query
+  }
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    prevPage: () => dispatch(actions.prevPage()),
+    nextPage: () => dispatch(actions.nextPage()),
+    updateQuery: (query) => {
+      return dispatch(actions.updateQuery(query))
+    }
+  };
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);

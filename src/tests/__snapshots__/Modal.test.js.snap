@@ -10,7 +10,7 @@ exports[`renders the original video when a media object is provided 1`] = `
       src="close-icon.svg"
     />
     <video
-      class="sc-htpNat fdswIX"
+      class="sc-htpNat euTtpZ"
       loop=""
       autoplay=""
       playsinline=""

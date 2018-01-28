@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Thumbnail from './Thumbnail';
+import Thumbnail from '../Thumbnail';
 
 it('renders an image element with the correct src', () => {
   const source = 'https://enda.ie/filename-01.gif';

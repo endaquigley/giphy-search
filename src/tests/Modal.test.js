@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Modal from './Modal';
+import Modal from '../Modal';
 
 it('renders the original video when a media object is provided', () => {
   const selected = {

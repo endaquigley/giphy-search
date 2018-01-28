@@ -3,7 +3,7 @@
 exports[`renders an image element for each element in the data array 1`] = `
 <div>
   <div
-    class="sc-bZQynM jgZutv"
+    class="sc-bZQynM dqowXz"
   >
     <div
       class="sc-bdVaJa kiUbly"
@@ -36,7 +36,7 @@ exports[`renders an image element for each element in the data array 1`] = `
 exports[`renders no image elements when data is empty 1`] = `
 <div>
   <div
-    class="sc-bZQynM jgZutv"
+    class="sc-bZQynM dqowXz"
   />
 </div>
 `;

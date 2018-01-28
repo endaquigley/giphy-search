@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
+import { Provider } from 'react-redux';
+import store from '../store';
+import App from '../App';
 
 const response = {
   data: [
@@ -29,7 +31,7 @@ global.fetch = jest.fn().mockImplementation(() => {
 
 it('renders without crashing', () => {
   const component = document.createElement('div');
-  ReactDOM.render(<App />, component);
-
+  ReactDOM.render(<Provider store={ store }><App /></Provider>, component);
+  
   expect(component).toMatchSnapshot();
 });
