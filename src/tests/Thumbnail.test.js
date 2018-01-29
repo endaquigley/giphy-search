@@ -12,4 +12,5 @@ it('renders an image element with the correct src', () => {
   expect(image.src).toBe('https://enda.ie/filename-01.gif');
   
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });

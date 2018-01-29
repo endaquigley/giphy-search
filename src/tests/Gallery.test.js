@@ -4,12 +4,19 @@ import { Gallery } from '../Gallery';
 
 it('renders no image elements when data is empty', () => {
   const component = document.createElement('div');
-  ReactDOM.render(<Gallery data={ [] } fetchImages={ () => undefined } />, component);
-
+  ReactDOM.render(
+    <Gallery
+      data={ [] }
+      fetchImages={ jest.fn() }
+    />,
+    component
+  );
+  
   const images = component.querySelectorAll('img');
   expect(images.length).toBe(0);
 
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });
 
 it('renders an image element for each element in the data array', () => {
@@ -31,7 +38,13 @@ it('renders an image element for each element in the data array', () => {
   ];
 
   const component = document.createElement('div');
-  ReactDOM.render(<Gallery data={ data } fetchImages={ () => undefined }  />, component);
+  ReactDOM.render(
+    <Gallery
+      data={ data }
+      fetchImages={ jest.fn() }
+    />,
+    component
+  );
 
   const images = component.querySelectorAll('img');
   expect(images.length).toBe(2);
@@ -40,4 +53,5 @@ it('renders an image element for each element in the data array', () => {
   expect(images[1].src).toBe('https://enda.ie/filename-02.gif');
 
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });

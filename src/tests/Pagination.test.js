@@ -10,6 +10,7 @@ it('renders a disabled previous button on page 1', () => {
   expect(component.querySelectorAll('button')[1].disabled).toBe(false);
 
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });
 
 it('renders an enabled previous button on pages greater than 1', () => {
@@ -20,4 +21,5 @@ it('renders an enabled previous button on pages greater than 1', () => {
   expect(component.querySelectorAll('button')[1].disabled).toBe(false);
 
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });

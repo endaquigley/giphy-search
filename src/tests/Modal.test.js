@@ -18,4 +18,5 @@ it('renders the original video when a media object is provided', () => {
   expect(video.src).toBe('https://enda.ie/filename-01.mp4');
 
   expect(component).toMatchSnapshot();
+  ReactDOM.unmountComponentAtNode(component);
 });
