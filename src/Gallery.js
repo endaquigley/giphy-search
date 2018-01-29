@@ -12,7 +12,7 @@ const Wrapper = styled.div`
   --thumbnail-width: 85px;
   grid-template-columns: repeat(auto-fit, minmax(var(--thumbnail-width), 1fr));
 
-  @media(min-width: 690px) {
+  @media (min-width: 690px) {
     --thumbnail-width: 120px;
   }
 `;
