@@ -44,6 +44,10 @@ export class Gallery extends Component {
   }
 
   renderThumbnail(media) {
+    if (media.images.preview_gif === undefined) {
+      return;
+    }
+    
     return (
       <Thumbnail
         key={ media.id }
