@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders a disabled previous button on page 1 1`] = `
+exports[`Pagination Component renders a disabled previous button on page 1 1`] = `
 <div>
   <div
     class="sc-bdVaJa bvvVRs"
@@ -21,7 +21,7 @@ exports[`renders a disabled previous button on page 1 1`] = `
 </div>
 `;
 
-exports[`renders an enabled previous button on pages greater than 1 1`] = `
+exports[`Pagination Component renders an enabled previous button on pages greater than 1 1`] = `
 <div>
   <div
     class="sc-bdVaJa bvvVRs"

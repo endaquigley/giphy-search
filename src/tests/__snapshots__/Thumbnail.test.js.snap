@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders an image element with the correct src 1`] = `
+exports[`Thumbnail Component renders an image element with the correct src 1`] = `
 <div>
   <div
     class="sc-bdVaJa kiUbly"
   >
     <div
-      class="sc-bwzfXH hDmqgu"
+      class="sc-bwzfXH djLAoA"
     >
       <img
         class="sc-htpNat jtiZZo"

@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import Thumbnail from './Thumbnail.js';
-import Modal from './Modal.js';
-import { connect } from 'react-redux';
-import * as actions from './actions';
+import React, { useEffect } from "react";
+import styled from "styled-components";
+import { connect } from "react-redux";
+
+import Modal from "./Modal.js";
+import Thumbnail from "./Thumbnail.js";
+import * as actions from "./actions";
 
 const Wrapper = styled.div`
   margin: 15px;
@@ -17,73 +18,68 @@ const Wrapper = styled.div`
   }
 `;
 
-export class Gallery extends Component {
+export const Gallery = React.memo(
+  ({ data, page, query, selected, fetchImages, updateSelected }) => {
+    useEffect(
+      () => {
+        fetchImages();
+      },
+      [query, page]
+    );
 
-  componentDidMount() {
-    this.props.fetchImages();
-  }
+    const renderSelectedModal = () => {
+      if (selected) {
+        return (
+          <Modal
+            selected={selected}
+            handleClick={() => updateSelected(undefined)}
+          />
+        );
+      }
+    };
 
-  componentDidUpdate(newProps) {
-    const samePage = (this.props.page === newProps.page);
-    const sameQuery = (this.props.query === newProps.query);
-    
-    if (samePage === false || sameQuery === false) {
-      this.props.fetchImages();
-    }
-  }
+    const renderThumbnail = media => {
+      if (media.images.preview_gif === undefined) {
+        return;
+      }
 
-  renderSelectedModal() {
-    if (this.props.selected) {
       return (
-        <Modal
-          selected={ this.props.selected }
-          handleClick={ () => this.props.updateSelected(undefined) }
+        <Thumbnail
+          key={media.id}
+          source={media.images.preview_gif.url}
+          handleClick={() => updateSelected(media)}
         />
       );
-    }
-  }
+    };
 
-  renderThumbnail(media) {
-    if (media.images.preview_gif === undefined) {
-      return;
-    }
-    
-    return (
-      <Thumbnail
-        key={ media.id }
-        source={ media.images.preview_gif.url }
-        handleClick={ () => this.props.updateSelected(media) }
-      />
-    );
-  }
-
-  render() {
     return (
       <Wrapper>
-        { this.renderSelectedModal() }
-        { this.props.data.map((media) => this.renderThumbnail(media)) }
+        {renderSelectedModal()}
+        {data.map(media => renderThumbnail(media))}
       </Wrapper>
     );
   }
+);
 
-}
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     data: state.data,
     page: state.page,
     query: state.query,
     selected: state.selected
   };
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     fetchImages: () => dispatch(actions.fetchImages()),
-    updateSelected: (selected) => {
+    updateSelected: selected => {
       return dispatch(actions.updateSelected(selected));
     }
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Gallery);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Gallery);

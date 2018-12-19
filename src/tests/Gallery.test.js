@@ -1,57 +1,48 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import { Gallery } from '../Gallery';
+import React from "react";
+import { render } from "react-testing-library";
 
-it('renders no image elements when data is empty', () => {
-  const component = document.createElement('div');
-  ReactDOM.render(
-    <Gallery
-      data={ [] }
-      fetchImages={ jest.fn() }
-    />,
-    component
-  );
-  
-  const images = component.querySelectorAll('img');
-  expect(images.length).toBe(0);
+import { Gallery } from "../Gallery";
 
-  expect(component).toMatchSnapshot();
-  ReactDOM.unmountComponentAtNode(component);
-});
+import "react-testing-library/cleanup-after-each";
 
-it('renders an image element for each element in the data array', () => {
-  const data = [
-    {
-      id: 1,
-      images: {
-        original: { mp4: 'https://enda.ie/filename-01.mp4' },
-        preview_gif: { url: 'https://enda.ie/filename-01.gif' }
+describe("Gallery Component", () => {
+  it("renders no image elements when data is empty", () => {
+    const { container } = render(<Gallery data={[]} fetchImages={jest.fn()} />);
+
+    const images = container.querySelectorAll("img");
+    expect(images.length).toBe(0);
+
+    expect(container).toMatchSnapshot();
+  });
+
+  it("renders an image element for each element in the data array", () => {
+    const data = [
+      {
+        id: 1,
+        images: {
+          original: { mp4: "https://enda.ie/filename-01.mp4" },
+          preview_gif: { url: "https://enda.ie/filename-01.gif" }
+        }
+      },
+      {
+        id: 2,
+        images: {
+          original: { mp4: "https://enda.ie/filename-02.mp4" },
+          preview_gif: { url: "https://enda.ie/filename-02.gif" }
+        }
       }
-    },
-    {
-      id: 2,
-      images: {
-        original: { mp4: 'https://enda.ie/filename-02.mp4' },
-        preview_gif: { url: 'https://enda.ie/filename-02.gif' }
-      }
-    }
-  ];
+    ];
 
-  const component = document.createElement('div');
-  ReactDOM.render(
-    <Gallery
-      data={ data }
-      fetchImages={ jest.fn() }
-    />,
-    component
-  );
+    const { container } = render(
+      <Gallery data={data} fetchImages={jest.fn()} />
+    );
 
-  const images = component.querySelectorAll('img');
-  expect(images.length).toBe(2);
-  
-  expect(images[0].src).toBe('https://enda.ie/filename-01.gif');
-  expect(images[1].src).toBe('https://enda.ie/filename-02.gif');
+    const images = container.querySelectorAll("img");
+    expect(images.length).toBe(2);
 
-  expect(component).toMatchSnapshot();
-  ReactDOM.unmountComponentAtNode(component);
+    expect(images[0].src).toBe("https://enda.ie/filename-01.gif");
+    expect(images[1].src).toBe("https://enda.ie/filename-02.gif");
+
+    expect(container).toMatchSnapshot();
+  });
 });

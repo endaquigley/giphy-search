@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 const Wrapper = styled.div`
   display: flex;
@@ -7,16 +7,14 @@ const Wrapper = styled.div`
   justify-content: space-between;
 `;
 
-const Pagination = ({ page, prevPage, nextPage }) => (
+const Pagination = React.memo(({ page, prevPage, nextPage }) => (
   <Wrapper>
-    <button onClick= { () => prevPage() } disabled={ page === 0 }>
+    <button onClick={() => prevPage()} disabled={page === 0}>
       Prev Page
     </button>
-    <span>Page { page + 1 }</span>
-    <button onClick= { () => nextPage() }>
-      Next Page
-    </button>
+    <span>Page {page + 1}</span>
+    <button onClick={() => nextPage()}>Next Page</button>
   </Wrapper>
-);
+));
 
 export default Pagination;

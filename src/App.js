@@ -1,9 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { connect } from 'react-redux';
-import styled from 'styled-components';
-import Gallery from './Gallery';
-import Pagination from './Pagination';
-import * as actions from './actions';
+import React, { Fragment } from "react";
+import { connect } from "react-redux";
+import styled from "styled-components";
+
+import Gallery from "./Gallery";
+import Pagination from "./Pagination";
+import * as actions from "./actions";
 
 const Header = styled.header`
   padding: 20px;
@@ -26,54 +27,52 @@ const Heading = styled.h1`
   margin-bottom: 15px;
 `;
 
-class App extends Component {
+const App = React.memo(({ page, query, prevPage, nextPage, updateQuery }) => {
+  return (
+    <Fragment>
+      <Header>
+        <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
+        <button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
+          Dog Search
+        </button>
+        <button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
+          Cat Search
+        </button>
+      </Header>
 
-  render() {
-    return (
-      <Fragment>
+      <Content>
+        <Gallery />
+      </Content>
 
-        <Header>
-          <Heading>
-            { this.props.query === 'dog' ? '🐶' : '🐱' }
-          </Heading>
+      <Footer>
+        <Pagination
+          page={page}
+          prevPage={() => prevPage()}
+          nextPage={() => nextPage()}
+        />
+      </Footer>
+    </Fragment>
+  );
+});
 
-          <button onClick={ () => this.props.updateQuery('dog') } disabled={ this.props.query === 'dog' }>Dog Search</button>
-          <button onClick={ () => this.props.updateQuery('cat') } disabled={ this.props.query === 'cat' }>Cat Search</button>
-        </Header>
-
-        <Content>
-          <Gallery />
-        </Content>
-
-        <Footer>
-          <Pagination
-            page={ this.props.page }
-            prevPage={ () => this.props.prevPage() }
-            nextPage={ () => this.props.nextPage() }
-          />
-        </Footer>
-
-      </Fragment>
-    );
-  }
-
-};
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     page: state.page,
     query: state.query
   };
-}
+};
 
-const mapDispatchToProps = (dispatch) => {
+const mapDispatchToProps = dispatch => {
   return {
     prevPage: () => dispatch(actions.prevPage()),
     nextPage: () => dispatch(actions.nextPage()),
-    updateQuery: (query) => {
-      return dispatch(actions.updateQuery(query))
+    updateQuery: query => {
+      return dispatch(actions.updateQuery(query));
     }
   };
-}
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

@@ -1,18 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders the original video when a media object is provided 1`] = `
+exports[`Modal Component renders the original video when a media object is provided 1`] = `
 <div>
   <div
-    class="sc-bdVaJa eVvdxU"
+    class="sc-bdVaJa bTLkfg"
   >
     <img
       class="sc-bwzfXH PoSZD"
       src="close-icon.svg"
     />
     <video
+      autoplay=""
       class="sc-htpNat euTtpZ"
       loop=""
-      autoplay=""
       playsinline=""
       src="https://enda.ie/filename-01.mp4"
     />

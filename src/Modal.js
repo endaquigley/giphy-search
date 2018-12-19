@@ -1,6 +1,7 @@
-import React, { Component } from 'react';
-import styled, { keyframes } from 'styled-components';
-import closeIcon from './images/close-icon.svg';
+import React, { useEffect } from "react";
+import styled, { keyframes } from "styled-components";
+
+import closeIcon from "./images/close-icon.svg";
 
 const scale = keyframes`
   from { transform: scale(0) }
@@ -18,7 +19,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.90);
+  background: rgba(0, 0, 0, 0.9);
 `;
 
 const Close = styled.img`
@@ -33,36 +34,32 @@ const Video = styled.video`
   width: 100%;
   max-width: 85vw;
   max-height: 85vh;
-  animation: 0.4s ${ scale };
+  animation: 0.4s ${scale};
 `;
 
-class Modal extends Component {
-
-  componentDidMount() {
+const Modal = React.memo(({ selected, handleClick }) => {
+  useEffect(() => {
     // disable scroll when modal is open
-    document.body.classList.add('no-scroll');
-  }
+    document.body.classList.add("no-scroll");
 
-  componentWillUnmount() {
-    // enable scroll when modal is closed
-    document.body.classList.remove('no-scroll');
-  }
+    return () => {
+      // enable scroll when modal is closed
+      document.body.classList.remove("no-scroll");
+    };
+  }, []);
 
-  render() {
-    return (
-      <Wrapper onClick={ () => this.props.handleClick() }>
-        <Close src={ closeIcon } />
-        <Video
-          loop
-          muted
-          autoPlay
-          playsInline
-          src={ this.props.selected.images.original.mp4 }
-        />
-      </Wrapper>
-    );
-  }
-
-};
+  return (
+    <Wrapper onClick={() => handleClick()}>
+      <Close src={closeIcon} />
+      <Video
+        loop
+        muted
+        autoPlay
+        playsInline
+        src={selected.images.original.mp4}
+      />
+    </Wrapper>
+  );
+});
 
 export default Modal;

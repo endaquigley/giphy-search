@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`renders without crashing 1`] = `
+exports[`App Component renders without crashing 1`] = `
 <div>
   <header
     class="sc-htoDjs ggvsSU"

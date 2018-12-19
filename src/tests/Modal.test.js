@@ -1,22 +1,25 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Modal from '../Modal';
+import React from "react";
+import { render } from "react-testing-library";
 
-it('renders the original video when a media object is provided', () => {
-  const selected = {
-    id: 1,
-    images: {
-      original: { mp4: 'https://enda.ie/filename-01.mp4' },
-      preview_gif: { url: 'https://enda.ie/filename-01.gif' }
-    }
-  };
+import Modal from "../Modal";
 
-  const component = document.createElement('div');
-  ReactDOM.render(<Modal selected={ selected } />, component);
+import "react-testing-library/cleanup-after-each";
 
-  const video = component.querySelector('video');
-  expect(video.src).toBe('https://enda.ie/filename-01.mp4');
+describe("Modal Component", () => {
+  it("renders the original video when a media object is provided", () => {
+    const selected = {
+      id: 1,
+      images: {
+        original: { mp4: "https://enda.ie/filename-01.mp4" },
+        preview_gif: { url: "https://enda.ie/filename-01.gif" }
+      }
+    };
 
-  expect(component).toMatchSnapshot();
-  ReactDOM.unmountComponentAtNode(component);
+    const { container } = render(<Modal selected={selected} />);
+
+    const video = container.querySelector("video");
+    expect(video.src).toBe("https://enda.ie/filename-01.mp4");
+
+    expect(container).toMatchSnapshot();
+  });
 });
