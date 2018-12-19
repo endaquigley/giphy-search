@@ -2,7 +2,6 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 
-import Modal from "./Modal.js";
 import Thumbnail from "./Thumbnail.js";
 import * as actions from "./actions";
 
@@ -19,65 +18,38 @@ const Wrapper = styled.div`
 `;
 
 export const Gallery = React.memo(
-  ({ data, page, query, selected, fetchImages, updateSelected }) => {
+  ({ data, page, query, fetchImages, updateSelected }) => {
     useEffect(
       () => {
         fetchImages();
       },
-      [query, page]
+      [page, query]
     );
-
-    const renderSelectedModal = () => {
-      if (selected) {
-        return (
-          <Modal
-            selected={selected}
-            handleClick={() => updateSelected(undefined)}
-          />
-        );
-      }
-    };
-
-    const renderThumbnail = media => {
-      if (media.images.preview_gif === undefined) {
-        return;
-      }
-
-      return (
-        <Thumbnail
-          key={media.id}
-          source={media.images.preview_gif.url}
-          handleClick={() => updateSelected(media)}
-        />
-      );
-    };
 
     return (
       <Wrapper>
-        {renderSelectedModal()}
-        {data.map(media => renderThumbnail(media))}
+        {data.map(media =>
+          media.images.preview_gif === undefined ? null : (
+            <Thumbnail
+              key={media.id}
+              source={media.images.preview_gif.url}
+              handleClick={() => updateSelected(media)}
+            />
+          )
+        )}
       </Wrapper>
     );
   }
 );
 
-const mapStateToProps = state => {
-  return {
-    data: state.data,
-    page: state.page,
-    query: state.query,
-    selected: state.selected
-  };
-};
+const mapStateToProps = ({ data, page, query }) => ({ data, page, query });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchImages: () => dispatch(actions.fetchImages()),
-    updateSelected: selected => {
-      return dispatch(actions.updateSelected(selected));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  fetchImages: () => dispatch(actions.fetchImages()),
+  updateSelected: selected => {
+    return dispatch(actions.updateSelected(selected));
+  }
+});
 
 export default connect(
   mapStateToProps,

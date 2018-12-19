@@ -9,11 +9,13 @@ const Wrapper = styled.div`
 
 const Pagination = React.memo(({ page, prevPage, nextPage }) => (
   <Wrapper>
-    <button onClick={() => prevPage()} disabled={page === 0}>
+    <button onClick={prevPage} disabled={page === 0}>
       Prev Page
     </button>
     <span>Page {page + 1}</span>
-    <button onClick={() => nextPage()}>Next Page</button>
+    <button onClick={nextPage} disabled={page === 99}>
+      Next Page
+    </button>
   </Wrapper>
 ));
 

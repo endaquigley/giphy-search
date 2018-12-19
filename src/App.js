@@ -2,6 +2,7 @@ import React, { Fragment } from "react";
 import { connect } from "react-redux";
 import styled from "styled-components";
 
+import Modal from "./Modal.js";
 import Gallery from "./Gallery";
 import Pagination from "./Pagination";
 import * as actions from "./actions";
@@ -41,36 +42,26 @@ const App = React.memo(({ page, query, prevPage, nextPage, updateQuery }) => {
       </Header>
 
       <Content>
+        <Modal />
         <Gallery />
       </Content>
 
       <Footer>
-        <Pagination
-          page={page}
-          prevPage={() => prevPage()}
-          nextPage={() => nextPage()}
-        />
+        <Pagination page={page} prevPage={prevPage} nextPage={nextPage} />
       </Footer>
     </Fragment>
   );
 });
 
-const mapStateToProps = state => {
-  return {
-    page: state.page,
-    query: state.query
-  };
-};
+const mapStateToProps = ({ page, query }) => ({ page, query });
 
-const mapDispatchToProps = dispatch => {
-  return {
-    prevPage: () => dispatch(actions.prevPage()),
-    nextPage: () => dispatch(actions.nextPage()),
-    updateQuery: query => {
-      return dispatch(actions.updateQuery(query));
-    }
-  };
-};
+const mapDispatchToProps = dispatch => ({
+  prevPage: () => dispatch(actions.prevPage()),
+  nextPage: () => dispatch(actions.nextPage()),
+  updateQuery: query => {
+    return dispatch(actions.updateQuery(query));
+  }
+});
 
 export default connect(
   mapStateToProps,

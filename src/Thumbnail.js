@@ -33,7 +33,7 @@ const Image = styled.img`
 const Thumbnail = React.memo(({ source, handleClick }) => (
   <GridChild>
     <Square>
-      <Image src={source} onClick={() => handleClick()} />
+      <Image src={source} onClick={handleClick} />
     </Square>
   </GridChild>
 ));

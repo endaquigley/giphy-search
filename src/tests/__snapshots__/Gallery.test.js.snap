@@ -3,28 +3,28 @@
 exports[`Gallery Component renders an image element for each element in the data array 1`] = `
 <div>
   <div
-    class="sc-bZQynM dNANyc"
+    class="sc-bxivhb hvqdZv"
   >
     <div
-      class="sc-bxivhb hPtXaV"
+      class="sc-bdVaJa kiUbly"
     >
       <div
-        class="sc-ifAKCX BwnNO"
+        class="sc-bwzfXH djLAoA"
       >
         <img
-          class="sc-EHOje jjfgVa"
+          class="sc-htpNat jtiZZo"
           src="https://enda.ie/filename-01.gif"
         />
       </div>
     </div>
     <div
-      class="sc-bxivhb hPtXaV"
+      class="sc-bdVaJa kiUbly"
     >
       <div
-        class="sc-ifAKCX BwnNO"
+        class="sc-bwzfXH djLAoA"
       >
         <img
-          class="sc-EHOje jjfgVa"
+          class="sc-htpNat jtiZZo"
           src="https://enda.ie/filename-02.gif"
         />
       </div>
@@ -36,7 +36,7 @@ exports[`Gallery Component renders an image element for each element in the data
 exports[`Gallery Component renders no image elements when data is empty 1`] = `
 <div>
   <div
-    class="sc-bZQynM dNANyc"
+    class="sc-bxivhb hvqdZv"
   />
 </div>
 `;

@@ -1,7 +1,9 @@
 import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
+import { connect } from "react-redux";
 
 import closeIcon from "./images/close-icon.svg";
+import * as actions from "./actions";
 
 const scale = keyframes`
   from { transform: scale(0) }
@@ -37,19 +39,27 @@ const Video = styled.video`
   animation: 0.4s ${scale};
 `;
 
-const Modal = React.memo(({ selected, handleClick }) => {
-  useEffect(() => {
-    // disable scroll when modal is open
-    document.body.classList.add("no-scroll");
+export const Modal = React.memo(({ selected, handleClick }) => {
+  useEffect(
+    () => {
+      const className = "no-scroll";
+      const { classList } = document.body;
 
-    return () => {
-      // enable scroll when modal is closed
-      document.body.classList.remove("no-scroll");
-    };
-  }, []);
+      selected ? classList.add(className) : classList.remove(className);
+
+      return () => {
+        classList.remove(className);
+      };
+    },
+    [selected]
+  );
+
+  if (selected === undefined) {
+    return null;
+  }
 
   return (
-    <Wrapper onClick={() => handleClick()}>
+    <Wrapper onClick={handleClick}>
       <Close src={closeIcon} />
       <Video
         loop
@@ -62,4 +72,13 @@ const Modal = React.memo(({ selected, handleClick }) => {
   );
 });
 
-export default Modal;
+const mapStateToProps = ({ selected }) => ({ selected });
+
+const mapDispatchToProps = dispatch => ({
+  handleClick: () => dispatch(actions.updateSelected())
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Modal);
