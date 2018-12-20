@@ -1,42 +1,38 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Gallery Component renders an image element for each element in the data array 1`] = `
-<div>
+<div
+  class="sc-bxivhb hvqdZv"
+>
   <div
-    class="sc-bxivhb hvqdZv"
+    class="sc-bdVaJa kiUbly"
   >
     <div
-      class="sc-bdVaJa kiUbly"
+      class="sc-bwzfXH djLAoA"
     >
-      <div
-        class="sc-bwzfXH djLAoA"
-      >
-        <img
-          class="sc-htpNat jtiZZo"
-          src="https://enda.ie/filename-01.gif"
-        />
-      </div>
+      <img
+        class="sc-htpNat jtiZZo"
+        src="https://enda.ie/filename-01.gif"
+      />
     </div>
+  </div>
+  <div
+    class="sc-bdVaJa kiUbly"
+  >
     <div
-      class="sc-bdVaJa kiUbly"
+      class="sc-bwzfXH djLAoA"
     >
-      <div
-        class="sc-bwzfXH djLAoA"
-      >
-        <img
-          class="sc-htpNat jtiZZo"
-          src="https://enda.ie/filename-02.gif"
-        />
-      </div>
+      <img
+        class="sc-htpNat jtiZZo"
+        src="https://enda.ie/filename-02.gif"
+      />
     </div>
   </div>
 </div>
 `;
 
 exports[`Gallery Component renders no image elements when data is empty 1`] = `
-<div>
-  <div
-    class="sc-bxivhb hvqdZv"
-  />
-</div>
+<div
+  class="sc-bxivhb hvqdZv"
+/>
 `;

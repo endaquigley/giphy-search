@@ -12,7 +12,7 @@ describe("Pagination Component", () => {
     expect(container.querySelectorAll("button")[0].disabled).toBe(true);
     expect(container.querySelectorAll("button")[1].disabled).toBe(false);
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("renders an enabled previous button on pages greater than 1", () => {
@@ -21,6 +21,6 @@ describe("Pagination Component", () => {
     expect(container.querySelectorAll("button")[0].disabled).toBe(false);
     expect(container.querySelectorAll("button")[1].disabled).toBe(false);
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

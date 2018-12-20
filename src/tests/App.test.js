@@ -35,6 +35,6 @@ describe("App Component", () => {
       </Provider>
     );
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

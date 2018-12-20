@@ -1,41 +1,37 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Pagination Component renders a disabled previous button on page 1 1`] = `
-<div>
-  <div
-    class="sc-bdVaJa bvvVRs"
+<div
+  class="sc-bdVaJa bvvVRs"
+>
+  <button
+    disabled=""
   >
-    <button
-      disabled=""
-    >
-      Prev Page
-    </button>
-    <span>
-      Page 
-      1
-    </span>
-    <button>
-      Next Page
-    </button>
-  </div>
+    Prev Page
+  </button>
+  <span>
+    Page 
+    1
+  </span>
+  <button>
+    Next Page
+  </button>
 </div>
 `;
 
 exports[`Pagination Component renders an enabled previous button on pages greater than 1 1`] = `
-<div>
-  <div
-    class="sc-bdVaJa bvvVRs"
-  >
-    <button>
-      Prev Page
-    </button>
-    <span>
-      Page 
-      2
-    </span>
-    <button>
-      Next Page
-    </button>
-  </div>
+<div
+  class="sc-bdVaJa bvvVRs"
+>
+  <button>
+    Prev Page
+  </button>
+  <span>
+    Page 
+    2
+  </span>
+  <button>
+    Next Page
+  </button>
 </div>
 `;

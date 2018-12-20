@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-testing-library";
 
-import { Gallery } from "../Gallery";
+import Gallery from "../Gallery";
 
 import "react-testing-library/cleanup-after-each";
 
@@ -12,7 +12,7 @@ describe("Gallery Component", () => {
     const images = container.querySelectorAll("img");
     expect(images.length).toBe(0);
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 
   it("renders an image element for each element in the data array", () => {
@@ -43,6 +43,6 @@ describe("Gallery Component", () => {
     expect(images[0].src).toBe("https://enda.ie/filename-01.gif");
     expect(images[1].src).toBe("https://enda.ie/filename-02.gif");
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

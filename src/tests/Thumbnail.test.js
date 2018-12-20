@@ -13,6 +13,6 @@ describe("Thumbnail Component", () => {
     const image = container.querySelector("img");
     expect(image.src).toBe("https://enda.ie/filename-01.gif");
 
-    expect(container).toMatchSnapshot();
+    expect(container.firstChild).toMatchSnapshot();
   });
 });

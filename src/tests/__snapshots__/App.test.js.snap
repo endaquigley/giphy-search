@@ -1,50 +1,21 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`App Component renders without crashing 1`] = `
-<div>
-  <header
-    class="sc-htoDjs ggvsSU"
+<header
+  class="sc-htoDjs ggvsSU"
+>
+  <h1
+    class="sc-gZMcBi hHyiFP"
   >
-    <h1
-      class="sc-gZMcBi hHyiFP"
-    >
-      🐶
-    </h1>
-    <button
-      disabled=""
-    >
-      Dog Search
-    </button>
-    <button>
-      Cat Search
-    </button>
-  </header>
-  <main
-    class="sc-dnqmqq bxGFOx"
+    🐶
+  </h1>
+  <button
+    disabled=""
   >
-    <div
-      class="sc-bZQynM dNANyc"
-    />
-  </main>
-  <footer
-    class="sc-iwsKbI fHEDOg"
-  >
-    <div
-      class="sc-gzVnrw bYgKLD"
-    >
-      <button
-        disabled=""
-      >
-        Prev Page
-      </button>
-      <span>
-        Page 
-        1
-      </span>
-      <button>
-        Next Page
-      </button>
-    </div>
-  </footer>
-</div>
+    Dog Search
+  </button>
+  <button>
+    Cat Search
+  </button>
+</header>
 `;
