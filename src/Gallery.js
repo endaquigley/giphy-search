@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { connect } from "react-redux";
 
 import Thumbnail from "./Thumbnail.js";
-import * as actions from "./actions";
 
 const Wrapper = styled.div`
   margin: 15px;
@@ -17,7 +15,7 @@ const Wrapper = styled.div`
   }
 `;
 
-export const Gallery = React.memo(
+const Gallery = React.memo(
   ({ data, page, query, fetchImages, updateSelected }) => {
     useEffect(
       () => {
@@ -42,16 +40,4 @@ export const Gallery = React.memo(
   }
 );
 
-const mapStateToProps = ({ data, page, query }) => ({ data, page, query });
-
-const mapDispatchToProps = dispatch => ({
-  fetchImages: () => dispatch(actions.fetchImages()),
-  updateSelected: selected => {
-    return dispatch(actions.updateSelected(selected));
-  }
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Gallery);
+export default Gallery;

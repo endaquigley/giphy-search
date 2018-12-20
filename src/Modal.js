@@ -1,9 +1,7 @@
 import React, { useEffect } from "react";
 import styled, { keyframes } from "styled-components";
-import { connect } from "react-redux";
 
 import closeIcon from "./images/close-icon.svg";
-import * as actions from "./actions";
 
 const scale = keyframes`
   from { transform: scale(0) }
@@ -39,7 +37,7 @@ const Video = styled.video`
   animation: 0.4s ${scale};
 `;
 
-export const Modal = React.memo(({ selected, handleClick }) => {
+const Modal = React.memo(({ selected, updateSelected }) => {
   useEffect(
     () => {
       const className = "no-scroll";
@@ -59,7 +57,7 @@ export const Modal = React.memo(({ selected, handleClick }) => {
   }
 
   return (
-    <Wrapper onClick={handleClick}>
+    <Wrapper onClick={() => updateSelected()}>
       <Close src={closeIcon} />
       <Video
         loop
@@ -72,13 +70,4 @@ export const Modal = React.memo(({ selected, handleClick }) => {
   );
 });
 
-const mapStateToProps = ({ selected }) => ({ selected });
-
-const mapDispatchToProps = dispatch => ({
-  handleClick: () => dispatch(actions.updateSelected())
-});
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Modal);
+export default Modal;

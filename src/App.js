@@ -28,38 +28,66 @@ const Heading = styled.h1`
   margin-bottom: 15px;
 `;
 
-const App = React.memo(({ page, query, prevPage, nextPage, updateQuery }) => {
-  return (
-    <Fragment>
-      <Header>
-        <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
-        <button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
-          Dog Search
-        </button>
-        <button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
-          Cat Search
-        </button>
-      </Header>
+const App = React.memo(
+  ({
+    data,
+    page,
+    query,
+    selected,
+    prevPage,
+    nextPage,
+    fetchImages,
+    updateQuery,
+    updateSelected
+  }) => {
+    return (
+      <Fragment>
+        <Modal selected={selected} updateSelected={updateSelected} />
 
-      <Content>
-        <Modal />
-        <Gallery />
-      </Content>
+        <Header>
+          <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
+          <button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
+            Dog Search
+          </button>
+          <button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
+            Cat Search
+          </button>
+        </Header>
 
-      <Footer>
-        <Pagination page={page} prevPage={prevPage} nextPage={nextPage} />
-      </Footer>
-    </Fragment>
-  );
+        <Content>
+          <Gallery
+            data={data}
+            page={page}
+            query={query}
+            fetchImages={fetchImages}
+            updateSelected={updateSelected}
+          />
+        </Content>
+
+        <Footer>
+          <Pagination page={page} prevPage={prevPage} nextPage={nextPage} />
+        </Footer>
+      </Fragment>
+    );
+  }
+);
+
+const mapStateToProps = ({ data, page, query, selected }) => ({
+  data,
+  page,
+  query,
+  selected
 });
-
-const mapStateToProps = ({ page, query }) => ({ page, query });
 
 const mapDispatchToProps = dispatch => ({
   prevPage: () => dispatch(actions.prevPage()),
   nextPage: () => dispatch(actions.nextPage()),
+  fetchImages: () => dispatch(actions.fetchImages()),
   updateQuery: query => {
     return dispatch(actions.updateQuery(query));
+  },
+  updateSelected: selected => {
+    return dispatch(actions.updateSelected(selected));
   }
 });
 
