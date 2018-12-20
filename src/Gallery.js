@@ -22,7 +22,13 @@ const Container = React.memo(() => {
   const { data, page, query } = state;
 
   const fetchImages = async () => {
-    const data = await actions.fetchImages(query, page);
+    const key = process.env.REACT_APP_GIPHY_API_KEY;
+    const endpoint = process.env.REACT_APP_GIPHY_API_ENDPOINT;
+    const url = `${endpoint}?api_key=${key}&q=${query}&offset=${page * 25}`;
+
+    const response = await fetch(url);
+    const { data } = await response.json();
+
     dispatch(actions.updateData(data));
   };
 
