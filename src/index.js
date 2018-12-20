@@ -2,18 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom";
 
 import App from "./App";
-import useStore from "./hooks/useStore";
+import Store from "./Store";
 import { Provider } from "./StoreContext";
 
 import "./index.css";
 
-const Store = React.memo(({ children }) => {
-  return children(useStore());
-});
-
 const Index = React.memo(() => (
   <Store>
-    {([state, dispatch]) => (
+    {({ state, dispatch }) => (
       <Provider value={{ state, dispatch }}>
         <App />
       </Provider>
