@@ -5,19 +5,7 @@ exports[`App Component renders without crashing 1`] = `
   <header
     class="sc-bdVaJa cdOnQX"
   >
-    <h1
-      class="sc-bxivhb dldbYM"
-    >
-      🐶
-    </h1>
-    <button
-      disabled=""
-    >
-      Dog Search
-    </button>
-    <button>
-      Cat Search
-    </button>
+    <div />
   </header>
   <main
     class="sc-bwzfXH nyjhc"

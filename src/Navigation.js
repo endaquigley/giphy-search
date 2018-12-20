@@ -1,13 +1,14 @@
-import React, { useContext } from "react";
+import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
 import StoreContext from "./StoreContext";
 import * as actions from "./actions";
 
-const Wrapper = styled.div`
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
+const Heading = styled.h1`
+  font-size: 50px;
+  line-height: 1;
+  margin-top: 0;
+  margin-bottom: 15px;
 `;
 
 const Button = styled.button`
@@ -47,42 +48,25 @@ const Button = styled.button`
 
 const Container = React.memo(() => {
   const { state, dispatch } = useContext(StoreContext);
-  const { page } = state;
+  const { query } = state;
 
-  const minPage = 0;
-  const maxPage = 99;
-
-  const prevPage = () => {
-    return dispatch(actions.prevPage());
+  const updateQuery = query => {
+    return dispatch(actions.updateQuery(query));
   };
 
-  const nextPage = () => {
-    return dispatch(actions.nextPage());
-  };
-
-  return (
-    <Pagination
-      page={page}
-      minPage={minPage}
-      maxPage={maxPage}
-      prevPage={prevPage}
-      nextPage={nextPage}
-    />
-  );
+  return <Navigation query={query} updateQuery={updateQuery} />;
 });
 
-export const Pagination = React.memo(
-  ({ page, minPage = 0, maxPage = 99, prevPage, nextPage }) => (
-    <Wrapper>
-      <Button onClick={prevPage} disabled={page === minPage}>
-        Prev Page
-      </Button>
-      <span>Page {page + 1}</span>
-      <Button onClick={nextPage} disabled={page === maxPage}>
-        Next Page
-      </Button>
-    </Wrapper>
-  )
-);
+export const Navigation = React.memo(({ query, updateQuery }) => (
+  <Fragment>
+    <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
+    <Button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
+      Dog Search
+    </Button>
+    <Button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
+      Cat Search
+    </Button>
+  </Fragment>
+));
 
 export default Container;
