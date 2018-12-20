@@ -7,8 +7,10 @@ import "react-testing-library/cleanup-after-each";
 
 describe("Modal Component", () => {
   it("should not render when a media object is not provided", () => {
+    const selected = undefined;
+
     const { container } = render(
-      <Modal selected={undefined} updateSelected={jest.fn()} />
+      <Modal selected={selected} updateSelected={jest.fn()} />
     );
 
     expect(container.firstChild).toBe(null);

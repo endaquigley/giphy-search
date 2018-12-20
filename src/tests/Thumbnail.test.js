@@ -8,7 +8,9 @@ import "react-testing-library/cleanup-after-each";
 describe("Thumbnail Component", () => {
   it("renders an image element with the correct src", () => {
     const source = "https://enda.ie/filename-01.gif";
-    const { container } = render(<Thumbnail source={source} />);
+    const { container } = render(
+      <Thumbnail source={source} handleClick={jest.fn()} />
+    );
 
     const image = container.querySelector("img");
     expect(image.src).toBe("https://enda.ie/filename-01.gif");

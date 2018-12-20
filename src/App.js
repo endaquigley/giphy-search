@@ -39,7 +39,7 @@ const Container = React.memo(() => {
   return <App query={query} updateQuery={updateQuery} />;
 });
 
-export const App = React.memo(({ query, updateQuery }) => (
+export const App = React.memo(({ query = "dog", updateQuery }) => (
   <Fragment>
     <Header>
       <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>

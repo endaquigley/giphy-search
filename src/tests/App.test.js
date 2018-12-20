@@ -31,7 +31,7 @@ fetchMock.get(new RegExp("https://api.giphy.com/v1/gifs/search/*"), {
 
 describe("App Component", () => {
   it("renders without crashing", () => {
-    const { container } = render(<App />);
+    const { container } = render(<App query="dog" updateQuery={jest.fn()} />);
 
     expect(container).toMatchSnapshot();
   });

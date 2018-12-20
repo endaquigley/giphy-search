@@ -47,6 +47,10 @@ const Container = React.memo(() => {
     return dispatch(actions.updateSelected());
   };
 
+  return <Modal selected={selected} updateSelected={updateSelected} />;
+});
+
+export const Modal = React.memo(({ selected, updateSelected }) => {
   useEffect(
     () => {
       const className = "no-scroll";
@@ -62,11 +66,7 @@ const Container = React.memo(() => {
     [selected]
   );
 
-  return <Modal selected={selected} updateSelected={updateSelected} />;
-});
-
-export const Modal = React.memo(
-  ({ selected, updateSelected }) =>
+  return (
     selected && (
       <Wrapper onClick={updateSelected}>
         <Close src={closeIcon} />
@@ -79,6 +79,7 @@ export const Modal = React.memo(
         />
       </Wrapper>
     )
-);
+  );
+});
 
 export default Container;

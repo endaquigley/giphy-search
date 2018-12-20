@@ -7,7 +7,9 @@ import "react-testing-library/cleanup-after-each";
 
 describe("Gallery Component", () => {
   it("renders no image elements when data is empty", () => {
-    const { container } = render(<Gallery data={[]} fetchImages={jest.fn()} />);
+    const { container } = render(
+      <Gallery data={[]} updateSelected={jest.fn()} />
+    );
 
     const images = container.querySelectorAll("img");
     expect(images.length).toBe(0);
@@ -34,7 +36,7 @@ describe("Gallery Component", () => {
     ];
 
     const { container } = render(
-      <Gallery data={data} fetchImages={jest.fn()} />
+      <Gallery data={data} updateSelected={jest.fn()} />
     );
 
     const images = container.querySelectorAll("img");
