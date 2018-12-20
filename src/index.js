@@ -7,14 +7,18 @@ import { Provider } from "./StoreContext";
 
 import "./index.css";
 
-const Index = React.memo(() => {
-  const [state, dispatch] = useStore();
-
-  return (
-    <Provider value={{ state, dispatch }}>
-      <App />
-    </Provider>
-  );
+const Store = React.memo(({ children }) => {
+  return children(useStore());
 });
+
+const Index = React.memo(() => (
+  <Store>
+    {([state, dispatch]) => (
+      <Provider value={{ state, dispatch }}>
+        <App />
+      </Provider>
+    )}
+  </Store>
+));
 
 ReactDOM.render(<Index />, document.getElementById("root"));

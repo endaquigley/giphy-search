@@ -3,20 +3,54 @@
 exports[`App Component renders without crashing 1`] = `
 <div>
   <header
-    class="sc-bdVaJa cdOnQX"
+    class="sc-gZMcBi iCyDGX"
   >
-    <div />
+    <h1
+      class="sc-bdVaJa hMOmBt"
+    >
+      🐶
+    </h1>
+    <button
+      class="sc-bwzfXH bwQeco"
+      disabled=""
+    >
+      Dog Search
+    </button>
+    <button
+      class="sc-bwzfXH bwQeco"
+    >
+      Cat Search
+    </button>
   </header>
   <main
-    class="sc-bwzfXH nyjhc"
+    class="sc-gqjmRU dwogNk"
   >
-    <div />
-    <div />
+    <div
+      class="sc-htoDjs bxEQbg"
+    />
   </main>
   <footer
-    class="sc-htpNat hgoBZN"
+    class="sc-VigVT kUMmUu"
   >
-    <div />
+    <div
+      class="sc-dnqmqq hKHdbA"
+    >
+      <button
+        class="sc-iwsKbI bmZaqg"
+        disabled=""
+      >
+        Prev Page
+      </button>
+      <span>
+        Page 
+        1
+      </span>
+      <button
+        class="sc-iwsKbI bmZaqg"
+      >
+        Next Page
+      </button>
+    </div>
   </footer>
 </div>
 `;
