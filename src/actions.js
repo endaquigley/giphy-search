@@ -12,19 +12,15 @@ export const updateData = data => {
   };
 };
 
-export const fetchImages = () => {
-  return async (dispatch, getState) => {
-    const { query, page } = getState();
+export const fetchImages = async (query, page) => {
+  const key = process.env.REACT_APP_GIFFY_API_KEY;
+  const endpoint = "https://api.giphy.com/v1/gifs/search";
+  const url = `${endpoint}?api_key=${key}&q=${query}&offset=${page * 25}`;
 
-    const key = process.env.REACT_APP_GIFFY_API_KEY;
-    const endpoint = "https://api.giphy.com/v1/gifs/search";
-    const url = `${endpoint}?api_key=${key}&q=${query}&offset=${page * 25}`;
+  const response = await fetch(url);
+  const { data } = await response.json();
 
-    const response = await fetch(url);
-    const { data } = await response.json();
-
-    dispatch(updateData(data));
-  };
+  return data;
 };
 
 export const updateSelected = selected => {

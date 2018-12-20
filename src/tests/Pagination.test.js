@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-testing-library";
 
-import Pagination from "../Pagination";
+import { Pagination } from "../Pagination";
 
 import "react-testing-library/cleanup-after-each";
 

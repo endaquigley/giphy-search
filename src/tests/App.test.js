@@ -1,10 +1,12 @@
 import React from "react";
-import { Provider } from "react-redux";
-import { render } from "react-testing-library";
 import fetchMock from "fetch-mock";
+import { render } from "react-testing-library";
 
-import App from "../App";
-import store from "../store";
+import { App } from "../App";
+
+jest.mock("../Modal", () => () => <div />);
+jest.mock("../Gallery", () => () => <div />);
+jest.mock("../Pagination", () => () => <div />);
 
 import "react-testing-library/cleanup-after-each";
 
@@ -29,12 +31,8 @@ fetchMock.get(new RegExp("https://api.giphy.com/v1/gifs/search/*"), {
 
 describe("App Component", () => {
   it("renders without crashing", () => {
-    const { container } = render(
-      <Provider store={store}>
-        <App />
-      </Provider>
-    );
+    const { container } = render(<App />);
 
-    expect(container.firstChild).toMatchSnapshot();
+    expect(container).toMatchSnapshot();
   });
 });

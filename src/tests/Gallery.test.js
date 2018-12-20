@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-testing-library";
 
-import Gallery from "../Gallery";
+import { Gallery } from "../Gallery";
 
 import "react-testing-library/cleanup-after-each";
 

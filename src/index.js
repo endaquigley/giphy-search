@@ -1,15 +1,20 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { Provider } from "react-redux";
 
 import App from "./App";
-import store from "./store";
+import useStore from "./hooks/useStore";
+import { Provider } from "./StoreContext";
 
 import "./index.css";
 
-ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById("root")
-);
+const Index = React.memo(() => {
+  const [state, dispatch] = useStore();
+
+  return (
+    <Provider value={{ state, dispatch }}>
+      <App />
+    </Provider>
+  );
+});
+
+ReactDOM.render(<Index />, document.getElementById("root"));

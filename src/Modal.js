@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import closeIcon from "./images/close-icon.svg";
+import StoreContext from "./StoreContext";
+import * as actions from "./actions";
 
 const scale = keyframes`
   from { transform: scale(0) }
@@ -37,12 +39,20 @@ const Video = styled.video`
   animation: 0.4s ${scale};
 `;
 
-const Modal = React.memo(({ selected, updateSelected }) => {
+const Container = React.memo(() => {
+  const { state, dispatch } = useContext(StoreContext);
+  const { selected } = state;
+
+  const updateSelected = () => {
+    return dispatch(actions.updateSelected());
+  };
+
   useEffect(
     () => {
       const className = "no-scroll";
       const { classList } = document.body;
 
+      // disable page scroll when modal is open...
       selected ? classList.add(className) : classList.remove(className);
 
       return () => {
@@ -52,22 +62,23 @@ const Modal = React.memo(({ selected, updateSelected }) => {
     [selected]
   );
 
-  if (selected === undefined) {
-    return null;
-  }
-
-  return (
-    <Wrapper onClick={() => updateSelected()}>
-      <Close src={closeIcon} />
-      <Video
-        loop
-        muted
-        autoPlay
-        playsInline
-        src={selected.images.original.mp4}
-      />
-    </Wrapper>
-  );
+  return <Modal selected={selected} updateSelected={updateSelected} />;
 });
 
-export default Modal;
+export const Modal = React.memo(
+  ({ selected, updateSelected }) =>
+    selected && (
+      <Wrapper onClick={updateSelected}>
+        <Close src={closeIcon} />
+        <Video
+          loop
+          muted
+          autoPlay
+          playsInline
+          src={selected.images.original.mp4}
+        />
+      </Wrapper>
+    )
+);
+
+export default Container;

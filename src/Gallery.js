@@ -1,7 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import Thumbnail from "./Thumbnail.js";
+import StoreContext from "./StoreContext";
+import * as actions from "./actions";
 
 const Wrapper = styled.div`
   margin: 15px;
@@ -15,29 +17,41 @@ const Wrapper = styled.div`
   }
 `;
 
-const Gallery = React.memo(
-  ({ data, page, query, fetchImages, updateSelected }) => {
-    useEffect(
-      () => {
-        fetchImages();
-      },
-      [page, query]
-    );
+const Container = React.memo(() => {
+  const { state, dispatch } = useContext(StoreContext);
+  const { data, page, query } = state;
 
-    return (
-      <Wrapper>
-        {data.map(media =>
-          media.images.preview_gif === undefined ? null : (
-            <Thumbnail
-              key={media.id}
-              source={media.images.preview_gif.url}
-              handleClick={() => updateSelected(media)}
-            />
-          )
-        )}
-      </Wrapper>
-    );
-  }
-);
+  const fetchImages = async () => {
+    const data = await actions.fetchImages(query, page);
+    dispatch(actions.updateData(data));
+  };
 
-export default Gallery;
+  const updateSelected = selected => {
+    return dispatch(actions.updateSelected(selected));
+  };
+
+  useEffect(
+    () => {
+      fetchImages();
+    },
+    [page, query]
+  );
+
+  return <Gallery data={data} updateSelected={updateSelected} />;
+});
+
+export const Gallery = React.memo(({ data, updateSelected }) => (
+  <Wrapper>
+    {data.map(media =>
+      media.images.preview_gif === undefined ? null : (
+        <Thumbnail
+          key={media.id}
+          source={media.images.preview_gif.url}
+          handleClick={() => updateSelected(media)}
+        />
+      )
+    )}
+  </Wrapper>
+));
+
+export default Container;

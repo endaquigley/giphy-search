@@ -1,3 +1,5 @@
+import { useReducer } from "react";
+
 const initialState = {
   page: 0,
   data: [],
@@ -5,7 +7,7 @@ const initialState = {
   selected: undefined
 };
 
-const reducer = (state = initialState, action) => {
+const reducer = (state, action) => {
   switch (action.type) {
     case "UPDATE_DATA":
       return {
@@ -43,4 +45,8 @@ const reducer = (state = initialState, action) => {
   }
 };
 
-export default reducer;
+const useStore = () => {
+  return useReducer(reducer, initialState);
+};
+
+export default useStore;

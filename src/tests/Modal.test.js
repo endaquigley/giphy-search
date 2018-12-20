@@ -1,7 +1,7 @@
 import React from "react";
 import { render } from "react-testing-library";
 
-import Modal from "../Modal";
+import { Modal } from "../Modal";
 
 import "react-testing-library/cleanup-after-each";
 
