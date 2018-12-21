@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import styled, { keyframes } from "styled-components";
 
 import closeIcon from "./images/close-icon.svg";
-import StoreContext from "./StoreContext";
+
+import { Store } from "./store";
 import * as actions from "./actions";
 
 const scale = keyframes`
@@ -40,8 +41,10 @@ const Video = styled.video`
 `;
 
 const Container = React.memo(() => {
-  const { state, dispatch } = useContext(StoreContext);
-  const { selected } = state;
+  const {
+    state: { selected },
+    dispatch
+  } = useContext(Store);
 
   const updateSelected = () => {
     return dispatch(actions.updateSelected());

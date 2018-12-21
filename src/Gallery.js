@@ -2,7 +2,8 @@ import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 
 import Thumbnail from "./Thumbnail.js";
-import StoreContext from "./StoreContext";
+
+import { Store } from "./store";
 import * as actions from "./actions";
 
 const Wrapper = styled.div`
@@ -18,8 +19,10 @@ const Wrapper = styled.div`
 `;
 
 const Container = React.memo(() => {
-  const { state, dispatch } = useContext(StoreContext);
-  const { data, page, query } = state;
+  const {
+    state: { data, page, query },
+    dispatch
+  } = useContext(Store);
 
   const fetchImages = async () => {
     const key = process.env.REACT_APP_GIPHY_API_KEY;

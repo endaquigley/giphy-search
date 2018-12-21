@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import StoreContext from "./StoreContext";
+import { Store } from "./store";
 import * as actions from "./actions";
 
 const Wrapper = styled.div`
@@ -46,8 +46,10 @@ const Button = styled.button`
 `;
 
 const Container = React.memo(() => {
-  const { state, dispatch } = useContext(StoreContext);
-  const { page } = state;
+  const {
+    state: { page },
+    dispatch
+  } = useContext(Store);
 
   const minPage = 0;
   const maxPage = 99;

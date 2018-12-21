@@ -1,7 +1,7 @@
 import React, { Fragment, useContext } from "react";
 import styled from "styled-components";
 
-import StoreContext from "./StoreContext";
+import { Store } from "./store";
 import * as actions from "./actions";
 
 const Heading = styled.h1`
@@ -47,8 +47,10 @@ const Button = styled.button`
 `;
 
 const Container = React.memo(() => {
-  const { state, dispatch } = useContext(StoreContext);
-  const { query } = state;
+  const {
+    state: { query },
+    dispatch
+  } = useContext(Store);
 
   const updateQuery = query => {
     return dispatch(actions.updateQuery(query));
