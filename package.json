@@ -1,15 +1,18 @@
 {
   "name": "giphy-search",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
-    "react": "^16.7.0-alpha.2",
-    "react-dom": "^16.7.0-alpha.2",
-    "react-scripts": "^2.1.1",
-    "styled-components": "^4.1.3"
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "7.1.0-alpha.5",
+    "react-scripts": "^3.0.1",
+    "redux": "^4.0.1",
+    "styled-components": "^4.2.0"
   },
   "devDependencies": {
-    "react-testing-library": "^5.4.2"
+    "react-testing-library": "^7.0.1",
+    "redux-mock-store": "^1.5.3"
   },
   "scripts": {
     "start": "react-scripts start",

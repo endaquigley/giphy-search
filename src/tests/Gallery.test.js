@@ -1,14 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import { render } from "react-testing-library";
 
 import { Gallery } from "../Gallery";
 
-import "react-testing-library/cleanup-after-each";
+const mockStore = configureStore([]);
 
 describe("Gallery Component", () => {
   it("renders no image elements when data is empty", () => {
+    const store = mockStore({
+      data: []
+    });
+
     const { container } = render(
-      <Gallery data={[]} updateSelected={jest.fn()} />
+      <Provider store={store}>
+        <Gallery />
+      </Provider>
     );
 
     const images = container.querySelectorAll("img");
@@ -18,25 +26,29 @@ describe("Gallery Component", () => {
   });
 
   it("renders an image element for each element in the data array", () => {
-    const data = [
-      {
-        id: 1,
-        images: {
-          original: { mp4: "https://enda.ie/filename-01.mp4" },
-          preview_gif: { url: "https://enda.ie/filename-01.gif" }
+    const store = mockStore({
+      data: [
+        {
+          id: 1,
+          images: {
+            original: { mp4: "https://enda.ie/filename-01.mp4" },
+            preview_gif: { url: "https://enda.ie/filename-01.gif" }
+          }
+        },
+        {
+          id: 2,
+          images: {
+            original: { mp4: "https://enda.ie/filename-02.mp4" },
+            preview_gif: { url: "https://enda.ie/filename-02.gif" }
+          }
         }
-      },
-      {
-        id: 2,
-        images: {
-          original: { mp4: "https://enda.ie/filename-02.mp4" },
-          preview_gif: { url: "https://enda.ie/filename-02.gif" }
-        }
-      }
-    ];
+      ]
+    });
 
     const { container } = render(
-      <Gallery data={data} updateSelected={jest.fn()} />
+      <Provider store={store}>
+        <Gallery />
+      </Provider>
     );
 
     const images = container.querySelectorAll("img");

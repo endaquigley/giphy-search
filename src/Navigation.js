@@ -1,7 +1,7 @@
-import React, { Fragment, useContext } from "react";
+import React, { Fragment } from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
-import { Store } from "./store";
 import * as actions from "./actions";
 
 const Heading = styled.h1`
@@ -46,29 +46,23 @@ const Button = styled.button`
   }
 `;
 
-const Container = React.memo(() => {
-  const {
-    state: { query },
-    dispatch
-  } = useContext(Store);
+export const Navigation = React.memo(() => {
+  const dispatch = useDispatch();
+  const query = useSelector(state => state.query);
 
   const updateQuery = query => {
     return dispatch(actions.updateQuery(query));
   };
 
-  return <Navigation query={query} updateQuery={updateQuery} />;
+  return (
+    <Fragment>
+      <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
+      <Button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
+        Dog Search
+      </Button>
+      <Button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
+        Cat Search
+      </Button>
+    </Fragment>
+  );
 });
-
-export const Navigation = React.memo(({ query, updateQuery }) => (
-  <Fragment>
-    <Heading>{query === "dog" ? "🐶" : "🐱"}</Heading>
-    <Button onClick={() => updateQuery("dog")} disabled={query === "dog"}>
-      Dog Search
-    </Button>
-    <Button onClick={() => updateQuery("cat")} disabled={query === "cat"}>
-      Cat Search
-    </Button>
-  </Fragment>
-));
-
-export default Container;

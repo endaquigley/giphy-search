@@ -1,10 +1,10 @@
 import React, { Fragment } from "react";
 import styled from "styled-components";
 
-import Navigation from "./Navigation";
-import Modal from "./Modal.js";
-import Gallery from "./Gallery";
-import Pagination from "./Pagination";
+import { Navigation } from "./Navigation";
+import { Modal } from "./Modal.js";
+import { Gallery } from "./Gallery";
+import { Pagination } from "./Pagination";
 
 const Header = styled.header`
   padding: 20px;
@@ -20,7 +20,7 @@ const Footer = styled.footer`
   padding: 20px;
 `;
 
-const App = React.memo(() => (
+export const App = React.memo(() => (
   <Fragment>
     <Header>
       <Navigation />
@@ -36,5 +36,3 @@ const App = React.memo(() => (
     </Footer>
   </Fragment>
 ));
-
-export default App;

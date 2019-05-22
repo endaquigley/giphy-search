@@ -1,20 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import { render } from "react-testing-library";
 
 import { Pagination } from "../Pagination";
 
-import "react-testing-library/cleanup-after-each";
+const mockStore = configureStore([]);
 
 describe("Pagination Component", () => {
   it("renders a disabled previous button the first page", () => {
+    const store = mockStore({
+      page: 0
+    });
+
     const { container, getByText } = render(
-      <Pagination
-        page={0}
-        minPage={0}
-        maxPage={99}
-        prevPage={jest.fn()}
-        nextPage={jest.fn()}
-      />
+      <Provider store={store}>
+        <Pagination />
+      </Provider>
     );
 
     expect(getByText("Prev Page").disabled).toBe(true);
@@ -24,14 +26,14 @@ describe("Pagination Component", () => {
   });
 
   it("renders an enabled previous button on pages greater than 1", () => {
+    const store = mockStore({
+      page: 1
+    });
+
     const { container, getByText } = render(
-      <Pagination
-        page={1}
-        minPage={0}
-        maxPage={99}
-        prevPage={jest.fn()}
-        nextPage={jest.fn()}
-      />
+      <Provider store={store}>
+        <Pagination />
+      </Provider>
     );
 
     expect(getByText("Prev Page").disabled).toBe(false);
@@ -41,14 +43,14 @@ describe("Pagination Component", () => {
   });
 
   it("renders a disabled next button the last page", () => {
+    const store = mockStore({
+      page: 99
+    });
+
     const { container, getByText } = render(
-      <Pagination
-        page={99}
-        minPage={0}
-        maxPage={99}
-        prevPage={jest.fn()}
-        nextPage={jest.fn()}
-      />
+      <Provider store={store}>
+        <Pagination />
+      </Provider>
     );
 
     expect(getByText("Prev Page").disabled).toBe(false);

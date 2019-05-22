@@ -5,7 +5,7 @@ export const initialState = {
   selected: undefined
 };
 
-export const reducer = (state, action) => {
+export const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case "UPDATE_DATA":
       return {

@@ -1,14 +1,22 @@
 import React from "react";
+import { Provider } from "react-redux";
+import configureStore from "redux-mock-store";
 import { render } from "react-testing-library";
 
 import { Navigation } from "../Navigation";
 
-import "react-testing-library/cleanup-after-each";
+const mockStore = configureStore([]);
 
 describe("Navigation Component", () => {
   it("should render in the cat state", () => {
+    const store = mockStore({
+      query: "cat"
+    });
+
     const { container, getByText } = render(
-      <Navigation query="cat" updateQuery={jest.fn()} />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     );
 
     expect(getByText("Dog Search").disabled).toBe(false);
@@ -18,8 +26,14 @@ describe("Navigation Component", () => {
   });
 
   it("should render in the dog state", () => {
+    const store = mockStore({
+      query: "dog"
+    });
+
     const { container, getByText } = render(
-      <Navigation query="dog" updateQuery={jest.fn()} />
+      <Provider store={store}>
+        <Navigation />
+      </Provider>
     );
 
     expect(getByText("Dog Search").disabled).toBe(true);

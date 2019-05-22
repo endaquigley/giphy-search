@@ -1,9 +1,10 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import styled, { keyframes } from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
 import closeIcon from "./images/close-icon.svg";
 
-import { Store } from "./store";
+import { useDisablePageScroll } from "./hooks";
 import * as actions from "./actions";
 
 const scale = keyframes`
@@ -40,34 +41,15 @@ const Video = styled.video`
   animation: 0.4s ${scale};
 `;
 
-const Container = React.memo(() => {
-  const {
-    state: { selected },
-    dispatch
-  } = useContext(Store);
+export const Modal = React.memo(() => {
+  const dispatch = useDispatch();
+  const selected = useSelector(state => state.selected);
+
+  useDisablePageScroll(selected);
 
   const updateSelected = () => {
     return dispatch(actions.updateSelected());
   };
-
-  return <Modal selected={selected} updateSelected={updateSelected} />;
-});
-
-export const Modal = React.memo(({ selected, updateSelected }) => {
-  useEffect(
-    () => {
-      const className = "no-scroll";
-      const { classList } = document.body;
-
-      // disable page scroll when modal is open...
-      selected ? classList.add(className) : classList.remove(className);
-
-      return () => {
-        classList.remove(className);
-      };
-    },
-    [selected]
-  );
 
   return (
     selected && (
@@ -84,5 +66,3 @@ export const Modal = React.memo(({ selected, updateSelected }) => {
     )
   );
 });
-
-export default Container;

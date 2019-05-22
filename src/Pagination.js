@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
+import { useSelector, useDispatch } from "react-redux";
 
-import { Store } from "./store";
 import * as actions from "./actions";
 
 const Wrapper = styled.div`
@@ -45,11 +45,9 @@ const Button = styled.button`
   }
 `;
 
-const Container = React.memo(() => {
-  const {
-    state: { page },
-    dispatch
-  } = useContext(Store);
+export const Pagination = React.memo(() => {
+  const dispatch = useDispatch();
+  const page = useSelector(state => state.page);
 
   const minPage = 0;
   const maxPage = 99;
@@ -63,18 +61,6 @@ const Container = React.memo(() => {
   };
 
   return (
-    <Pagination
-      page={page}
-      minPage={minPage}
-      maxPage={maxPage}
-      prevPage={prevPage}
-      nextPage={nextPage}
-    />
-  );
-});
-
-export const Pagination = React.memo(
-  ({ page, minPage = 0, maxPage = 99, prevPage, nextPage }) => (
     <Wrapper>
       <Button onClick={prevPage} disabled={page === minPage}>
         Prev Page
@@ -84,7 +70,5 @@ export const Pagination = React.memo(
         Next Page
       </Button>
     </Wrapper>
-  )
-);
-
-export default Container;
+  );
+});
